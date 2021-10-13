@@ -25,34 +25,8 @@ const val TAB_HOME = "Home"
 const val TAB_OTHERS = "Others"
 
 @Composable
-private fun currentRoute(navController: NavHostController): String? {
-  val navBackStackEntry by navController.currentBackStackEntryAsState()
-  val currentRoute = navBackStackEntry?.destination?.route
-  return currentRoute
-}
-
-@Composable
 fun MainBottomBar(navController: NavHostController) {
-  val stateTab = remember { mutableStateOf(TAB_HOME) }
-//  val stateTab by remember { mutableStateOf(TAB_HOME) }
 
-  val currentRoute = currentRoute(navController)
-
-  BottomAppBar(
-    elevation = 8.dp,
-    backgroundColor = MaterialTheme.colors.primary
-  ) {
-    BottomBarItem(
-      selected = currentRoute == TAB_HOME,
-      text = stringResource(R.string.menu_home),
-      icon = Icons.Default.Home
-    ) { navController.navigate(TAB_HOME) }
-    BottomBarItem(
-      selected = currentRoute == TAB_OTHERS,
-      text = stringResource(R.string.menu_others),
-      icon = Icons.Default.Add
-    ) { navController.navigate(TAB_OTHERS) }
-  }
 }
 
 @Composable
@@ -62,14 +36,12 @@ private fun RowScope.BottomBarItem(
   icon: ImageVector,
   onClick: () -> Unit
 ) {
-  BottomNavigationItem(
-    selected = selected,
-    onClick = { onClick() },
-    selectedContentColor = Color.White,
-    unselectedContentColor = Color.White.copy(0.4f),
-    icon = {
-      Icon(icon, contentDescription = null)
-    },
-    label = { Text(text) }
-  )
+
+}
+
+@Composable
+private fun currentRoute(navController: NavHostController): String? {
+  val navBackStackEntry by navController.currentBackStackEntryAsState()
+  val currentRoute = navBackStackEntry?.destination?.route
+  return currentRoute
 }

@@ -10,14 +10,5 @@ import com.gigigo.composeexample.R
 
 @Composable
 fun AppTopBar(onClickPhone: () -> Unit) {
-    TopAppBar(
-        title = { Text(stringResource(R.string.app_name)) },
-        backgroundColor = MaterialTheme.colors.primary,
-        elevation = 8.dp,
-        actions = {
-            IconButton(onClick = { onClickPhone() }) {
-                Icon(Icons.Default.Phone, contentDescription = null)
-            }
-        }
-    )
+
 }

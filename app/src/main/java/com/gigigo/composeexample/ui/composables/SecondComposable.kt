@@ -20,13 +20,7 @@ import com.gigigo.composeexample.R as R
 
 @Composable
 fun CustomViewScreen(onNavigate: (Int) -> Unit) {
-    AndroidViewBinding(CustomViewBinding::inflate) {
-        textviewFirst.text ="Este es el primer fragmento"
-        buttonFirst.setOnClickListener {
-            onNavigate(R.id.action_SecondFragment_to_FirstFragment)
-        }
-
-    }
+    //Custom view with Compose
 }
 
 @Composable

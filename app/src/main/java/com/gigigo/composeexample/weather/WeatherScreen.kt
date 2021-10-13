@@ -36,119 +36,27 @@ fun HomeScreen() {
 
 @Composable
 fun HomeContainer(weather: Weather) {
-    DrawImageBackground()
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        CityText(weather)
-        Spacer(modifier = Modifier.height(50.dp))
-        CurrentTemperature(weather)
-        CurrentWeatherStatus(weather)
-        Spacer(modifier = Modifier.height(50.dp))
-        LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(4.dp),
-        ) {
-            items(weather.forecast) { message ->
-                ForecastItem(message)
-            }
-        }
-    }
+
 }
 
 @Composable
 fun ForecastItem(forecast: WeatherForecast) {
-    Card(
-        modifier = Modifier
-            .padding(horizontal = 24.dp),
-        elevation = 8.dp,
-        backgroundColor = MaterialTheme.colors.bgCard
-    ) {
-        Box(modifier = Modifier
-            .padding(
-                horizontal = 16.dp,
-                vertical = 8.dp
-            )
-            .fillMaxWidth()
-        ) {
-            Text(text = forecast.day)
-            Image(
-                contentDescription = null,
-                painter = painterResource(id = forecast.status.weatherToImage()),
-                modifier = Modifier
-                    .height(16.dp)
-                    .fillMaxWidth(),
-                alignment = Alignment.Center
-            )
-            Text(text = forecast.temperature,
-                modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.End)
-        }
-    }
+    //Card
 }
 
 @Composable
 fun CurrentTemperature(weather: Weather) {
-    Text(
-        text = weather.currentTemperature,
-        style = MaterialTheme.typography.h1,
-        color = MaterialTheme.colors.onPrimary,
-    )
+    //Add composable text temperature
 }
 
 @Composable
 fun CurrentWeatherStatus(weather: Weather) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Image(
-            painter = painterResource(id = weather.currentStatus.weatherToImage()),
-            contentDescription = null,
-            modifier = Modifier
-                .width(32.dp)
-                .height(32.dp)
-        )
-        Text(
-            text = weather.currentStatus.weatherToString(),
-            style = MaterialTheme.typography.body1,
-            color = MaterialTheme.colors.onPrimary,
-            modifier = Modifier.padding(horizontal = 12.dp),
-        )
-    }
-}
-
-@Composable
-fun CityText(weather: Weather) {
-    Row(
-        modifier = Modifier.padding(12.dp)
-    ) {
-        Text(
-            text = weather.city,
-            style = MaterialTheme.typography.h3,
-            color = MaterialTheme.colors.onPrimary
-        )
-    }
+    // Row with image and text status
 }
 
 @Composable
 fun DrawImageBackground() {
-    Image(
-        painter = painterResource(id = R.drawable.sunny),
-        contentDescription = null,
-        modifier = Modifier.fillMaxSize(),
-        contentScale = ContentScale.FillBounds,
-    )
+    // Add background image
 }
 
-@Preview(name = "Dark", device = Devices.PIXEL_4, uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Preview(name = "Normal", device = Devices.NEXUS_5)
-@Composable
-fun DefaultPreview() {
-    ComposeExampleTheme() {
-        HomeContainer(weather)
-    }
-}
+//Add preview
