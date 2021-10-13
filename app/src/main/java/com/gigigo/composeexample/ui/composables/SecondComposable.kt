@@ -1,6 +1,5 @@
 package com.gigigo.composeexample.ui.composables
 
-
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
@@ -13,14 +12,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidViewBinding
 import androidx.navigation.compose.rememberNavController
+import com.gigigo.composeexample.databinding.CustomViewBinding
 import com.gigigo.composeexample.databinding.FragmentFirstBinding
 import com.gigigo.composeexample.databinding.FragmentSecondBinding
 
 import com.gigigo.composeexample.R as R
 
 @Composable
-fun XmlSecondScreen(onNavigate: (Int) -> Unit) {
-    AndroidViewBinding(FragmentFirstBinding::inflate) {
+fun CustomViewScreen(onNavigate: (Int) -> Unit) {
+    AndroidViewBinding(CustomViewBinding::inflate) {
         textviewFirst.text ="Este es el primer fragmento"
         buttonFirst.setOnClickListener {
             onNavigate(R.id.action_SecondFragment_to_FirstFragment)
